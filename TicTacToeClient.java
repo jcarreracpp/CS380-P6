@@ -1,8 +1,10 @@
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -21,7 +23,10 @@ public class TicTacToeClient {
             BufferedReader br = new BufferedReader(isr);
             OutputStream os = socket.getOutputStream();
             ByteArrayOutputStream b = new ByteArrayOutputStream();
+            byte[] marps = new byte[10];
+            ByteArrayInputStream bin = new ByteArrayInputStream(marps);
             ObjectOutputStream o = new ObjectOutputStream(b);
+            ObjectInputStream oi = new ObjectInputStream(bin);
             ConnectMessage oup = new ConnectMessage("Jorge");
             CommandMessage begin = new CommandMessage(CommandMessage.Command.NEW_GAME);
             
@@ -29,6 +34,7 @@ public class TicTacToeClient {
             o.writeObject(begin);
             System.out.println("HW");
             
+            oi.read();
             int[][] map = new int[3][3];
             for(int i = 0 ; i < 3 ; i++){
                 for(int j = 0; j < 3; j++){
