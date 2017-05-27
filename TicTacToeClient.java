@@ -1,12 +1,6 @@
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -66,6 +60,7 @@ public class TicTacToeClient {
                     errorAvoided = false;
                 }
             }
+            
             if(!errorAvoided){
             }else if(response.getStatus() == BoardMessage.Status.PLAYER1_VICTORY){
                 System.out.println("You Won!");
